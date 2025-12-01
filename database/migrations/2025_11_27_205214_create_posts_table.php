@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             // ✅ BONNE PRATIQUE : Utilise foreignId()
            $table->foreignId('category_id')
-           ->constrained()      // Lie automatiquement à 'categories' table, 'id' column
+           ->constrained()      // -Lie automatiquement à 'categories' table, 'id' column
            ->cascadeOnDelete(); // Utilisation du raccourci moderne
             $table->string('color');
             $table->string('image');
