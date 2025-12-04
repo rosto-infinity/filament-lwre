@@ -4,9 +4,11 @@ namespace App\Filament\Resources\Posts\Tables;
 
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ColorColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\ToggleColumn;
@@ -33,6 +35,13 @@ class PostsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                   DeleteAction::make()
+                 ->successNotification(
+       Notification::make()
+            ->success()
+             ->title('Artile supprimé')
+    ->body('L\'article a été supprimé avec succès.'),
+                 )
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
