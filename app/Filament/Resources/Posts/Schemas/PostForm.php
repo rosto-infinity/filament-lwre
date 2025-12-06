@@ -27,19 +27,31 @@ class PostForm
                     ->icon(Heroicon::RocketLaunch)
                     ->schema([
                         Group::make()->schema([
-                                TextInput::make('title') ->rules(['required', 'min:3', 'max:10']),
-                                TextInput::make('slug')->unique(),
+                                TextInput::make('title')->rules(['required', 'min:3', 'max:160'])
+                                 ->validationMessages([
+                                    "min"=> "Le titre doit avoir au moins  3 caractères",
+                                    "required"=> "Le titre est oligatoire",
+                                    "max"=> "Le titre doit avoir au max  160 caractères"
+                                ]),
+                                TextInput::make('slug')
+                                ->rules(['required'])->unique()
+                                ->validationMessages([
+                                    "unique"=> "Le slug doit etre unique",
+                                    "required"=> "Le slug est oligatoire"
+                                ]),
                                 Select::make('category_id')
+                                ->rules(['required'])
                                     ->label('Category')
                                     ->options(Category::all()->pluck('name', 'id')),
-                                ColorPicker::make('color'),
+                                ColorPicker::make('color')->nullable(),
                             ])->columns(2),
-                        MarkdownEditor::make('body'),
+                        MarkdownEditor::make('body')->rules(['required']),
                     ]),
                  Group::make()->schema([
                       Section::make('Image Upload')
                          ->schema([
-                            FileUpload::make('image')->disk('public')->directory('posts'),
+                            FileUpload::make('image')->disk('public')->directory('posts')
+                            ->rules(['required']),
                         ]), 
                       Section::make('Meta')
                          ->schema([

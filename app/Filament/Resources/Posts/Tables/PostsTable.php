@@ -22,14 +22,14 @@ class PostsTable
                 ImageColumn::make("image")
                  ->circular()
                 ->disk("public"),
-                TextColumn::make("title"),
-                TextColumn::make("slug"),
+                TextColumn::make("title")->label('Le titre')->sortable(),
+                TextColumn::make("slug")->sortable(),
                 TextColumn::make("category.name"),
-                TextColumn::make("body"),
+                TextColumn::make("created_at")->label('Date de creation')->dateTime(),
                 ToggleColumn::make("published"),
-                ColorColumn::make('color'),
+                ColorColumn::make('color')->label('Couleur'),
                 TextColumn::make("tags"),
-            ])
+            ])->defaultSort('title','asc')
             ->filters([
                 //
             ])

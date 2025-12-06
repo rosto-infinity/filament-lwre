@@ -5,7 +5,9 @@ namespace App\Filament\Resources\Categories\Tables;
 use Filament\Tables\Table;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\ReplicateAction;
 use Filament\Tables\Columns\TextColumn;
 
 class CategoriesTable
@@ -22,6 +24,8 @@ class CategoriesTable
                 //
             ])
             ->recordActions([
+                ReplicateAction::make(),
+                DeleteAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([
