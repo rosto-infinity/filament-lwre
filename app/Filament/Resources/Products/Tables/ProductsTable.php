@@ -19,6 +19,7 @@ class ProductsTable
                 ImageColumn::make("image")->disk("public"),
                TextColumn::make("name"),
                TextColumn::make("sku"),
+               TextColumn::make("description")->limit(10),
                TextColumn::make("price"),
                TextColumn::make("stock"),
             ])

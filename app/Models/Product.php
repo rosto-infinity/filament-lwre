@@ -14,6 +14,8 @@ class Product extends Model
             "stock",
             "image",
             "is_active",
-           "is_featured"
+           "is_featured",
+           "created_at",
+           "updated_at"
     ];
 }
