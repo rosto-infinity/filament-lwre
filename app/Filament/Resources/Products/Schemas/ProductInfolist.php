@@ -21,7 +21,7 @@ class ProductInfolist
         return $schema
             ->components([
 
-                //########################## Design 01
+                //########################## Design 01 deux colonnes
                 // Section::make("Informations du produit")
                 //     ->schema([
                 //         TextEntry::make("name")
